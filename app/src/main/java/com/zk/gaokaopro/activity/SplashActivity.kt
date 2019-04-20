@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.os.Handler
 import android.view.View
+import com.blankj.utilcode.util.BarUtils
 import com.yanzhenjie.permission.AndPermission
 import com.zk.gaokaopro.R
 
@@ -44,6 +45,8 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun initViews() {
+//        BarUtils.addMarginTopEqualStatusBarHeight(container)
+        BarUtils.setStatusBarLightMode(this, true)
     }
 
     override fun setListener() {

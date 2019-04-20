@@ -2,13 +2,19 @@ package com.zk.gaokaopro.fragment
 
 import android.os.Bundle
 import android.view.View
+import com.blankj.utilcode.util.BarUtils
 import com.zk.gaokaopro.R
+import com.zk.gaokaopro.model.RecommendBean
 import com.zk.gaokaopro.utils.GlideImageLoader
+import com.zk.gaokaopro.viewModel.BaseViewModel
+import com.zk.gaokaopro.viewModel.RecommendViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import team.zhuoke.sdk.base.BaseFragment
 
 
 class HomeFragment : BaseFragment() {
+
+    private val recommendViewModel = RecommendViewModel()
 
     override fun initListener() {
 
@@ -25,10 +31,29 @@ class HomeFragment : BaseFragment() {
 
         //设置图片加载器
         banner.setImageLoader(GlideImageLoader())
-        //设置图片集合
-        banner.setImages(images)
-        //banner设置方法全部调用完毕时最后调用
-        banner.start()
+//        //设置图片集合
+//        banner.setImages(images)
+//        //banner设置方法全部调用完毕时最后调用
+//        banner.start()
+
+        recommendViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<RecommendBean>>{
+            override fun success(result: ArrayList<RecommendBean>?) {
+
+                if (result != null) {
+                    var imageUrlList= mutableListOf<String>()
+                    for (recommendBean in result) {
+                        imageUrlList.add(recommendBean.imgUrl)
+//                        imageUrlList.add(images[0])
+                    }
+
+                    //设置图片集合
+                    banner.setImages(imageUrlList)
+                    //banner设置方法全部调用完毕时最后调用
+                    banner.start()
+                }
+            }
+        })
+        recommendViewModel.requestData()
     }
 
     override fun getLayoutId(): Int {
@@ -36,6 +61,7 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun initView(rootView: View) {
+        activity?.let { BarUtils.setStatusBarLightMode(it, true) }
     }
 
     override fun onStart() {
