@@ -1,8 +1,13 @@
 package com.zk.gaokaopro.activity
 
 import android.util.Log
+import com.blankj.utilcode.util.FragmentUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.zk.gaokaopro.R
+import com.zk.gaokaopro.fragment.HomeFragment
+import com.zk.gaokaopro.fragment.ListFragment
+import com.zk.gaokaopro.fragment.MeFragment
+import com.zk.gaokaopro.model.GKBaseBean
 import com.zk.gaokaopro.model.RecommendBean
 import com.zk.gaokaopro.model.request.RequestLogin
 import com.zk.gaokaopro.model.response.ResponseLogin
@@ -11,6 +16,7 @@ import com.zk.gaokaopro.net.requestmanager.LoginManager
 import com.zk.gaokaopro.viewModel.BaseViewModel
 import com.zk.gaokaopro.viewModel.RecommendViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import team.zhuoke.sdk.base.BaseFragment
 
 class MainActivity : BaseActivity() {
     val TAG: String = "MainActivity"
@@ -21,47 +27,32 @@ class MainActivity : BaseActivity() {
         when (item.itemId) {
             R.id.navigation_home -> {
                 message.setText(R.string.title_home)
+                addFragment(HomeFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
                 message.text = "请求网络数据"
-
+                addFragment(ListFragment())
                 recommendViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<RecommendBean>>{
                     override fun success(result: ArrayList<RecommendBean>?) {
                         message.text = result.toString()
-                        logD("哈哈哈")
+                        logD("请求数据是：${result.toString()}")
                     }
                 })
                 recommendViewModel.requestData()
-
-
-//                val viewModel = ViewModelProviders.of(this).get(RecommendViewModel::class.java)
-//                viewModel.liveData.observe(this, Observer {
-//                    if (it != null) {
-//                        val errorCode = it.code
-//                        if (errorCode == GKConstant.CODE_SUCCESS) {
-//                            message.text = it.result.toString()
-////                            LiveDataBus.instance.getChannel(EventConstants.CONSULTATION_VIEW_COUNT_EVENT, RefreshData::class.java)
-////                                .postValue(refreshData)
-//                            return@Observer
-//                        }
-//                    }
-//                    val msg = it.msg
-//                    if (!TextUtils.isEmpty(msg))
-//                        ToastUtils.showShort(msg)
-//                })
-//                viewModel.requestData()
-
-                oldRequest()
-
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
+                addFragment(MeFragment())
+                message.setText(R.string.title_me)
                 return@OnNavigationItemSelectedListener true
             }
         }
         false
+    }
+
+    private fun addFragment(fragment: BaseFragment) {
+        FragmentUtils.replace(supportFragmentManager, fragment, R.id.container)
     }
 
     private fun logD(s: String) {
@@ -123,5 +114,7 @@ class MainActivity : BaseActivity() {
                 Log.d(TAG,"onComplete")
             }
         })
+
+        FragmentUtils.add(supportFragmentManager, HomeFragment(), R.id.container)
     }
 }

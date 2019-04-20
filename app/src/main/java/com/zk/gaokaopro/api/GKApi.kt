@@ -5,9 +5,7 @@ import com.zk.gaokaopro.model.RecommendBean
 import com.zk.gaokaopro.model.request.RequestLogin
 import com.zk.gaokaopro.model.response.ResponseLogin
 import io.reactivex.Observable
-import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.GET
 import retrofit2.http.Query
