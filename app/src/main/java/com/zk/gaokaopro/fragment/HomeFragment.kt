@@ -9,13 +9,15 @@ import com.zk.gaokaopro.GKConstant
 import com.zk.gaokaopro.R
 import com.zk.gaokaopro.adapter.CommendSpacesItemDecoration
 import com.zk.gaokaopro.adapter.HomeHListAdapter
-import com.zk.gaokaopro.adapter.HomeListAdapter
+import com.zk.gaokaopro.adapter.HomeNewsListAdapter
 import com.zk.gaokaopro.model.CategoryBean
 import com.zk.gaokaopro.model.HomeListBean
+import com.zk.gaokaopro.model.NewsListBean
 import com.zk.gaokaopro.model.RecommendBean
 import com.zk.gaokaopro.utils.GlideImageLoader
 import com.zk.gaokaopro.viewModel.BaseViewModel
 import com.zk.gaokaopro.viewModel.CategoryViewModel
+import com.zk.gaokaopro.viewModel.NewsListViewModel
 import com.zk.gaokaopro.viewModel.RecommendViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import team.zhuoke.sdk.base.BaseFragment
@@ -44,9 +46,11 @@ class HomeFragment : BaseFragment() {
     )
 
     val homHomeListAdapter = HomeHListAdapter(null)
+    val homeNewsListAdapter = HomeNewsListAdapter(null)
 
     private val recommendViewModel = RecommendViewModel()
     private val categoryViewModel = CategoryViewModel()
+    private val newsListViewModel = NewsListViewModel()
 
     override fun getLayoutId(): Int {
         return com.zk.gaokaopro.R.layout.fragment_home
@@ -104,9 +108,16 @@ class HomeFragment : BaseFragment() {
                     homHomeListAdapter.setNewData(result)
                 }
             }
-
         })
         categoryViewModel.requestData()
+
+
+        newsListViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<NewsListBean>>{
+            override fun success(result: ArrayList<NewsListBean>?) {
+                homeNewsListAdapter.setNewData(result)
+            }
+        })
+        newsListViewModel.requestData()
     }
 
     private fun initRecyclerView() {
@@ -123,7 +134,7 @@ class HomeFragment : BaseFragment() {
 
 
         listRecyclerView.layoutManager = LinearLayoutManager(activity)
-        listRecyclerView.adapter = HomeListAdapter(list)
+        listRecyclerView.adapter = homeNewsListAdapter
     }
 
 

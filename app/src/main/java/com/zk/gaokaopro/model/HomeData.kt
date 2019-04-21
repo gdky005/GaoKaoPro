@@ -14,3 +14,9 @@ data class CategoryBean(
     @SerializedName("url") val url: String
 )
 
+data class NewsListBean(
+    @SerializedName("title") val title: String,
+    @SerializedName("imgUrl") val imgUrl: String,
+    @SerializedName("url") val url: String
+)
+
