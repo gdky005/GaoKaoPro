@@ -5,7 +5,10 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
+import com.blankj.utilcode.util.ToastUtils
+import com.youth.banner.listener.OnBannerListener
 import com.zk.gaokaopro.GKConstant
+import com.zk.gaokaopro.GKConstant.images
 import com.zk.gaokaopro.R
 import com.zk.gaokaopro.adapter.CommendSpacesItemDecoration
 import com.zk.gaokaopro.adapter.HomeHListAdapter
@@ -37,13 +40,8 @@ class HomeFragment : BaseFragment() {
     // 推荐图片的列数
     val picColumn = GKConstant.PIC_COLUMN
 
-    val images = mutableListOf(
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3351381896,4018125707&fm=26&gp=0.jpg",
-        "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1218711089,2266838887&fm=26&gp=0.jpg",
-        "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=283299632,427497639&fm=26&gp=0.jpg",
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=136990643,61379176&fm=26&gp=0.jpg",
-        "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1288117223,3597668578&fm=26&gp=0.jpg"
-    )
+    private var imageUrls =  mutableListOf<RecommendBean>()
+
 
     val homHomeListAdapter = HomeHListAdapter(null)
     val homeNewsListAdapter = HomeNewsListAdapter(null)
@@ -67,23 +65,31 @@ class HomeFragment : BaseFragment() {
     override fun initData(savedInstanceState: Bundle?) {
         initRecyclerView()
 
+        // 推荐数据
         val images = mutableListOf(R.drawable.default_pic)
-
         //设置图片加载器
         banner.setImageLoader(GlideImageLoader())
+        banner.setOnBannerListener(object : OnBannerListener {
+            override fun OnBannerClick(position: Int) {
+                ToastUtils.showShort(imageUrls[position].title)
+            }
+
+        })
 //        //设置图片集合
         banner.setImages(images)
 //        //banner设置方法全部调用完毕时最后调用
         banner.start()
 
+
+
         recommendViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<RecommendBean>>{
             override fun success(result: ArrayList<RecommendBean>?) {
-
                 if (result != null) {
-                    var imageUrlList= mutableListOf<String>()
+                    imageUrls = result
+
+                    val imageUrlList= mutableListOf<String>()
                     for (recommendBean in result) {
                         imageUrlList.add(recommendBean.imgUrl)
-//                        imageUrlList.add(images[0])
                     }
 
                     //设置图片集合
@@ -96,22 +102,16 @@ class HomeFragment : BaseFragment() {
         recommendViewModel.requestData()
 
 
+        //8大分类
         categoryViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<CategoryBean>> {
             override fun success(result: ArrayList<CategoryBean>?) {
-
-                if (result != null) {
-                    var imageUrlList= mutableListOf<String>()
-                    for (recommendBean in result) {
-                        imageUrlList.add(recommendBean.imgUrl)
-                    }
-
-                    homHomeListAdapter.setNewData(result)
-                }
+                homHomeListAdapter.setNewData(result)
             }
         })
         categoryViewModel.requestData()
 
 
+        //新闻列表
         newsListViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<NewsListBean>>{
             override fun success(result: ArrayList<NewsListBean>?) {
                 homeNewsListAdapter.setNewData(result)
@@ -131,10 +131,17 @@ class HomeFragment : BaseFragment() {
         hRecyclerView.addItemDecoration(CommendSpacesItemDecoration(ConvertUtils.dp2px(picColumnSpace)))
         hRecyclerView.layoutManager = authorPicLLM
         hRecyclerView.adapter = homHomeListAdapter
-
+        homHomeListAdapter.setOnItemClickListener { adapter, view, position ->
+            val categoryBean = adapter.data[position] as CategoryBean
+            ToastUtils.showShort(categoryBean.title)
+        }
 
         listRecyclerView.layoutManager = LinearLayoutManager(activity)
         listRecyclerView.adapter = homeNewsListAdapter
+        homeNewsListAdapter.setOnItemClickListener { adapter, view, position ->
+            val newListBean = adapter.data[position] as NewsListBean
+            ToastUtils.showShort(newListBean.title)
+        }
     }
 
 
