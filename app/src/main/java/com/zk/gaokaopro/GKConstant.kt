@@ -7,6 +7,16 @@ object GKConstant{
 
     const val PIC_COLUMN = 4
 
+    //失效用户
+    const val USER_DEFAULT_INVALID_UID = -1
+
+    const val SP_FILE_NAME_USER_INFO = "sp_file_name_user_info"
+    const val SP_KEY_USER_UID = "sp_key_user_uid"
+    const val SP_KEY_USER_NAME = "sp_key_user_name"
+    const val SP_KEY_USER_MOBILE = "sp_key_user_mobile"
+
+
+
 
     // webview  调整参数
     const val FLAG_WEBVIEW_URL = "flag_webview_url"

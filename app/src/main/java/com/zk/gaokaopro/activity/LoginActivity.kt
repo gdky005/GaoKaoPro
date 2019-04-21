@@ -11,7 +11,12 @@ import android.widget.TextView
 import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.KeyboardUtils
 import com.blankj.utilcode.util.RegexUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.zk.gaokaopro.R
+import com.zk.gaokaopro.manager.UserInfoManager
+import com.zk.gaokaopro.model.LoginBean
+import com.zk.gaokaopro.viewModel.BaseViewModel
+import com.zk.gaokaopro.viewModel.LoginViewModel
 import kotlinx.android.synthetic.main.layout_login.*
 import team.zhuoke.sdk.base.BaseActivity
 
@@ -28,6 +33,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     lateinit var tvLoginPhoneNumberWarning: TextView
     lateinit var ivPasswordClear: ImageView
     lateinit var ivLoginNameClear: ImageView
+
+    lateinit var loginViewModel : LoginViewModel
 
     override fun getLayoutId(): Int {
         return R.layout.layout_login
@@ -57,6 +64,17 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     override fun initData() {
         setBarState(loginRootView, R.color.white, true)
         BarUtils.addMarginTopEqualStatusBarHeight(loginRootView)
+
+        loginViewModel = LoginViewModel()
+        loginViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<LoginBean> {
+            override fun success(result: LoginBean?) {
+                if (result != null) {
+                    UserInfoManager.instance.saveUserInfo(result)
+                    ToastUtils.showShort("登录成功：${result.name}")
+                    finish()
+                }
+            }
+        })
     }
 
     private fun visibleLoginClearIV(isVisible: Boolean) {
@@ -132,6 +150,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         if (!verifyLoginRule(account, password)) return
 
         showWarning(false, isShow = false)
+
+        loginViewModel.requestData()
     }
 
     /**

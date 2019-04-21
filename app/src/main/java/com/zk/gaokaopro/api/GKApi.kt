@@ -27,6 +27,9 @@ interface GKApi {
     @GET(UrlConfig.URL_LIST)
     fun requestList(): Observable<GKBaseBean<ArrayList<ListBean>>>
 
+    @GET(UrlConfig.URL_LOGIN)
+    fun requestLogin(): Observable<GKBaseBean<LoginBean>>
+
     @POST(UrlConfig.URL_USER_LOGIN)
     fun login(@Body login: RequestLogin): Observable<GKBaseBean<ResponseLogin>>
 

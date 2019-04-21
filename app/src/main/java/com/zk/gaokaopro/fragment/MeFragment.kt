@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import com.blankj.utilcode.util.BarUtils
-import com.blankj.utilcode.util.ToastUtils
 import com.zk.gaokaopro.R
 import com.zk.gaokaopro.activity.LoginActivity
 import kotlinx.android.synthetic.main.fragment_me.*
@@ -33,11 +32,7 @@ class MeFragment : BaseFragment(), View.OnClickListener {
     }
 
     fun login() {
-
-        ToastUtils.showShort("准备登录")
-
         startActivity(Intent(activity, LoginActivity::class.java))
-
     }
 
 
