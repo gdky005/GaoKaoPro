@@ -13,7 +13,7 @@ class HomeListAdapter(data: MutableList<HomeListBean>?) :
         if (helper != null && item != null) {
             helper.setText(R.id.tvTitle, item.title)
 
-            Glide.with(mContext).load(item.url).into(helper.getView(R.id.iv))
+            Glide.with(mContext).load(item.url).placeholder(R.drawable.default_pic).into(helper.getView(R.id.iv))
         }
     }
 

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
+import com.zk.gaokaopro.GKConstant
 import com.zk.gaokaopro.R
 import com.zk.gaokaopro.adapter.CommendSpacesItemDecoration
 import com.zk.gaokaopro.adapter.HomeHListAdapter
@@ -18,14 +19,19 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import team.zhuoke.sdk.base.BaseFragment
 
 
+
+
+
+
 class HomeFragment : BaseFragment() {
 
    companion object {
        // 图片的间距
        const val picColumnSpace = 10F
-       // 推荐图片的列数
-       const val picColumn = 3
    }
+
+    // 推荐图片的列数
+    val picColumn = GKConstant.PIC_COLUMN
 
     val images = mutableListOf(
         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3351381896,4018125707&fm=26&gp=0.jpg",
@@ -38,7 +44,7 @@ class HomeFragment : BaseFragment() {
     private val recommendViewModel = RecommendViewModel()
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_home
+        return com.zk.gaokaopro.R.layout.fragment_home
     }
 
     override fun initView(rootView: View) {
@@ -52,12 +58,14 @@ class HomeFragment : BaseFragment() {
     override fun initData(savedInstanceState: Bundle?) {
         initRecyclerView()
 
+        val images = mutableListOf(R.drawable.default_pic)
+
         //设置图片加载器
         banner.setImageLoader(GlideImageLoader())
 //        //设置图片集合
-//        banner.setImages(images)
+        banner.setImages(images)
 //        //banner设置方法全部调用完毕时最后调用
-//        banner.start()
+        banner.start()
 
         recommendViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<RecommendBean>>{
             override fun success(result: ArrayList<RecommendBean>?) {
@@ -82,7 +90,7 @@ class HomeFragment : BaseFragment() {
     private fun initRecyclerView() {
         //        https://www.jianshu.com/p/b343fcff51b0
         val list = ArrayList<HomeListBean>()
-        for (i in 0..5) {
+        for (i in 0..7) {
             list.add(HomeListBean("名字：$i", images[i % images.size]))
         }
 

@@ -44,3 +44,13 @@ recommendViewModel.age = 22 //添加请求参数2
 recommendViewModel.requestData()
 ```
 
+## 图片设置
+
+```
+Glide.with(fragment).
+    load(iconUrl).error( R.drawable.error) //异常时候显示的图片
+    .placeholder( R.drawable.default) //加载成功前显示的图片
+    .fallback( R.drawable.blank) //url为空的时候,显示的图片
+    .into(Icon);//在RequestBuilder 中使用自定义的ImageViewTarget
+
+```
