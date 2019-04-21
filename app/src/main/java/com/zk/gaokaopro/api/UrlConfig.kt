@@ -16,6 +16,11 @@ object UrlConfig {
     const val URL_TEST = "test"
     const val URL_RECOMMEND = "recommend"
     const val URL_CATEGORY = "category"
-    const val URL_NEW_LIST = "newList"
+    const val URL_NEWS_LIST = "newList"
+
+    //分类页面接口
+    const val URL_LIST = "list"
+
+    //测试页面接口
     const val URL_USER_LOGIN = "login/user_login"
 }

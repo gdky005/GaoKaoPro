@@ -1,9 +1,6 @@
 package com.zk.gaokaopro.api
 
-import com.zk.gaokaopro.model.CategoryBean
-import com.zk.gaokaopro.model.GKBaseBean
-import com.zk.gaokaopro.model.NewsListBean
-import com.zk.gaokaopro.model.RecommendBean
+import com.zk.gaokaopro.model.*
 import com.zk.gaokaopro.model.request.RequestLogin
 import com.zk.gaokaopro.model.response.ResponseLogin
 import io.reactivex.Observable
@@ -24,8 +21,11 @@ interface GKApi {
     @GET(UrlConfig.URL_CATEGORY)
     fun requestCategory(): Observable<GKBaseBean<ArrayList<CategoryBean>>>
 
-    @GET(UrlConfig.URL_NEW_LIST)
+    @GET(UrlConfig.URL_NEWS_LIST)
     fun requestNewList(): Observable<GKBaseBean<ArrayList<NewsListBean>>>
+
+    @GET(UrlConfig.URL_LIST)
+    fun requestList(): Observable<GKBaseBean<ArrayList<ListBean>>>
 
     @POST(UrlConfig.URL_USER_LOGIN)
     fun login(@Body login: RequestLogin): Observable<GKBaseBean<ResponseLogin>>

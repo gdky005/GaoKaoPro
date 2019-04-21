@@ -19,9 +19,9 @@ import com.zk.gaokaopro.model.NewsListBean
 import com.zk.gaokaopro.model.RecommendBean
 import com.zk.gaokaopro.utils.GlideImageLoader
 import com.zk.gaokaopro.viewModel.BaseViewModel
-import com.zk.gaokaopro.viewModel.CategoryViewModel
-import com.zk.gaokaopro.viewModel.NewsListViewModel
-import com.zk.gaokaopro.viewModel.RecommendViewModel
+import com.zk.gaokaopro.viewModel.home.CategoryViewModel
+import com.zk.gaokaopro.viewModel.home.NewsListViewModel
+import com.zk.gaokaopro.viewModel.home.RecommendViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import team.zhuoke.sdk.base.BaseFragment
 

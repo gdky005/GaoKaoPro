@@ -1,7 +1,8 @@
-package com.zk.gaokaopro.viewModel
+package com.zk.gaokaopro.viewModel.home
 
 import com.zk.gaokaopro.model.GKBaseBean
 import com.zk.gaokaopro.model.NewsListBean
+import com.zk.gaokaopro.viewModel.BaseViewModel
 import io.reactivex.Observable
 
 class NewsListViewModel : BaseViewModel<ArrayList<NewsListBean>>() {
