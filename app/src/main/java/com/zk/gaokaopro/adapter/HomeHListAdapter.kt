@@ -1,29 +1,27 @@
 package com.zk.gaokaopro.adapter
 
 import android.util.Log
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.blankj.utilcode.util.ConvertUtils
-import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ScreenUtils
 import com.bumptech.glide.Glide
 import com.zk.gaokaopro.GKConstant
 import com.zk.gaokaopro.R
 import com.zk.gaokaopro.fragment.HomeFragment.Companion.picColumnSpace
-import com.zk.gaokaopro.model.HomeListBean
+import com.zk.gaokaopro.model.CategoryBean
 import team.zhuoke.sdk.component.ZKAdapter
 import team.zhuoke.sdk.component.ZKViewHolder
 
-class HomeHListAdapter(data: MutableList<HomeListBean>?) :
-    ZKAdapter<HomeListBean, ZKViewHolder>(R.layout.item_home_h_list, data) {
+class HomeHListAdapter(data: MutableList<CategoryBean>?) :
+    ZKAdapter<CategoryBean, ZKViewHolder>(R.layout.item_home_h_list, data) {
 
     // 推荐图片的间距值
     @Volatile
     var picWidth = 0
     lateinit var params: LinearLayout.LayoutParams
 
-    override fun convert(helper: ZKViewHolder?, item: HomeListBean?) {
+    override fun convert(helper: ZKViewHolder?, item: CategoryBean?) {
         if (helper != null && item != null) {
             val imageView = helper.getView<ImageView>(R.id.iv)
             val params = imageView.layoutParams
@@ -46,7 +44,7 @@ class HomeHListAdapter(data: MutableList<HomeListBean>?) :
             imageView.layoutParams = params
 
             helper.setText(R.id.tvTitle, item.title)
-            Glide.with(mContext).load(item.url).placeholder(R.drawable.default_pic).into(imageView)
+            Glide.with(mContext).load(item.imgUrl).placeholder(R.drawable.default_pic).into(imageView)
         }
     }
 

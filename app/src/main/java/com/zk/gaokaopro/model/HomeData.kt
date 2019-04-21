@@ -7,3 +7,10 @@ data class RecommendBean(
     @SerializedName("imgUrl") val imgUrl: String,
     @SerializedName("url") val url: String
 )
+
+data class CategoryBean(
+    @SerializedName("title") val title: String,
+    @SerializedName("imgUrl") val imgUrl: String,
+    @SerializedName("url") val url: String
+)
+

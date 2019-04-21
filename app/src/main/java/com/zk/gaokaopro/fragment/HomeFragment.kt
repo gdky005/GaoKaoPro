@@ -10,10 +10,12 @@ import com.zk.gaokaopro.R
 import com.zk.gaokaopro.adapter.CommendSpacesItemDecoration
 import com.zk.gaokaopro.adapter.HomeHListAdapter
 import com.zk.gaokaopro.adapter.HomeListAdapter
+import com.zk.gaokaopro.model.CategoryBean
 import com.zk.gaokaopro.model.HomeListBean
 import com.zk.gaokaopro.model.RecommendBean
 import com.zk.gaokaopro.utils.GlideImageLoader
 import com.zk.gaokaopro.viewModel.BaseViewModel
+import com.zk.gaokaopro.viewModel.CategoryViewModel
 import com.zk.gaokaopro.viewModel.RecommendViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import team.zhuoke.sdk.base.BaseFragment
@@ -41,7 +43,10 @@ class HomeFragment : BaseFragment() {
         "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1288117223,3597668578&fm=26&gp=0.jpg"
     )
 
+    val homHomeListAdapter = HomeHListAdapter(null)
+
     private val recommendViewModel = RecommendViewModel()
+    private val categoryViewModel = CategoryViewModel()
 
     override fun getLayoutId(): Int {
         return com.zk.gaokaopro.R.layout.fragment_home
@@ -85,6 +90,23 @@ class HomeFragment : BaseFragment() {
             }
         })
         recommendViewModel.requestData()
+
+
+        categoryViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<CategoryBean>> {
+            override fun success(result: ArrayList<CategoryBean>?) {
+
+                if (result != null) {
+                    var imageUrlList= mutableListOf<String>()
+                    for (recommendBean in result) {
+                        imageUrlList.add(recommendBean.imgUrl)
+                    }
+
+                    homHomeListAdapter.setNewData(result)
+                }
+            }
+
+        })
+        categoryViewModel.requestData()
     }
 
     private fun initRecyclerView() {
@@ -97,7 +119,7 @@ class HomeFragment : BaseFragment() {
         val authorPicLLM = GridLayoutManager(activity, picColumn)
         hRecyclerView.addItemDecoration(CommendSpacesItemDecoration(ConvertUtils.dp2px(picColumnSpace)))
         hRecyclerView.layoutManager = authorPicLLM
-        hRecyclerView.adapter = HomeHListAdapter(list)
+        hRecyclerView.adapter = homHomeListAdapter
 
 
         listRecyclerView.layoutManager = LinearLayoutManager(activity)
