@@ -23,7 +23,6 @@ class MeFragment : BaseFragment() {
 
     override fun initView(rootView: View) {
         BarUtils.addMarginTopEqualStatusBarHeight(meRootView)
-        activity?.let { BarUtils.setStatusBarLightMode(it, true) }
     }
 
 }

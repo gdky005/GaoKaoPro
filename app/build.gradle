@@ -50,7 +50,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.material:material:1.1.0-alpha05'
-    implementation 'com.github.ZhuoKeTeam:zhuoke-sdk:1.0.9'
+    implementation 'com.github.ZhuoKeTeam:zhuoke-sdk:1.0.10'
 
 
     //Android图片轮播控件: https://github.com/youth5201314/banner

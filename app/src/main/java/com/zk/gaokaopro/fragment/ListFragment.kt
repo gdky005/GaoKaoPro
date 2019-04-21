@@ -23,6 +23,5 @@ class ListFragment : BaseFragment() {
 
     override fun initView(rootView: View) {
         BarUtils.addMarginTopEqualStatusBarHeight(listRootView)
-        activity?.let { BarUtils.setStatusBarLightMode(it, true) }
     }
 }

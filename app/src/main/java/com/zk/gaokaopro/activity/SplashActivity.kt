@@ -3,10 +3,10 @@ package com.zk.gaokaopro.activity
 import android.Manifest
 import android.content.Intent
 import android.os.Handler
-import android.view.View
-import com.blankj.utilcode.util.BarUtils
 import com.yanzhenjie.permission.AndPermission
 import com.zk.gaokaopro.R
+import kotlinx.android.synthetic.main.layout_splash.*
+import team.zhuoke.sdk.base.BaseActivity
 
 class SplashActivity : BaseActivity() {
 
@@ -31,41 +31,20 @@ class SplashActivity : BaseActivity() {
         true
     }
 
-    override fun getContentViewId(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.layout_splash
     }
-
-    override fun getIntentData() {
-    }
-
-    override fun getViewModel() {
-    }
-
-    override fun setViewModelObserve() {
-    }
-
     override fun initViews() {
-//        BarUtils.addMarginTopEqualStatusBarHeight(container)
-        BarUtils.setStatusBarLightMode(this, true)
+        setBarState(splashContainer)
     }
 
-    override fun setListener() {
+    override fun initListener() {
     }
+
 
     override fun initData() {
-        initWindowConfig()
         permissionCheck()
-
 //        splashHandler.sendEmptyMessageDelayed(FLAG_ENTER_MAIN, DELAY_TIME)
-    }
-
-    private fun initWindowConfig() {
-        val decorView = window.decorView
-        decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_FULLSCREEN)
     }
 
     //####################################### 权限 startActivity ############################################

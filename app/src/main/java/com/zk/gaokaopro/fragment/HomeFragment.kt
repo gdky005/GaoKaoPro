@@ -2,7 +2,6 @@ package com.zk.gaokaopro.fragment
 
 import android.os.Bundle
 import android.view.View
-import com.blankj.utilcode.util.BarUtils
 import com.zk.gaokaopro.R
 import com.zk.gaokaopro.model.RecommendBean
 import com.zk.gaokaopro.utils.GlideImageLoader
@@ -61,7 +60,7 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun initView(rootView: View) {
-        activity?.let { BarUtils.setStatusBarLightMode(it, true) }
+//        BarUtils.addMarginTopEqualStatusBarHeight(homeRootView)
     }
 
     override fun onStart() {

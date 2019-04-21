@@ -1,8 +1,6 @@
 package com.zk.gaokaopro.activity
 
 import android.util.Log
-import com.blankj.utilcode.util.BarUtils
-import com.blankj.utilcode.util.BarUtils.setStatusBarColor
 import com.blankj.utilcode.util.FragmentUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.zk.gaokaopro.R
@@ -49,8 +47,7 @@ class MainActivity : BaseActivity() {
 
 
     override fun initViews() {
-        BarUtils.subtractMarginTopEqualStatusBarHeight(rootView)
-        setStatusBarColor(this, resources.getColor(R.color.transparent), true)
+        setBarState(rootView)
     }
 
     override fun initData() {
