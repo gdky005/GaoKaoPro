@@ -3,4 +3,13 @@
     <string name="title_home">主页</string>
     <string name="title_list">列表</string>
     <string name="title_me">我的</string>
+
+    <string name="login_name_hint">输入手机号</string>
+    <string name="login_password_hint">输入密码</string>
+    <string name="register_verify_code_hint">输入验证码</string>
+    <string name="warning_input_success_phone_number">请输入正确手机号</string>
+    <string name="warning_input_success_pwd">请输入正确的密码</string>
+
+    <string name="login_forget_password">忘记密码</string>
+    <string name="login_button">登录</string>
 </resources>

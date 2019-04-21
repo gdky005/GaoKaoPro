@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		android:id="@+id/loginRootView"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/white">
+
+	<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_alignBottom="@+id/login_ll"
+			android:layout_alignParentBottom="true"
+			android:scaleType="fitEnd"
+			android:visibility="gone"
+			android:src="@drawable/bg_login_bottom"/>
+
+	<LinearLayout
+			android:id="@+id/login_ll"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:focusable="true"
+			android:focusableInTouchMode="true"
+			android:orientation="vertical">
+
+		<RelativeLayout
+				android:id="@+id/rl_login_layout"
+				style="@style/EditTextRLStyle">
+
+			<EditText
+					android:id="@+id/et_login_name"
+					style="@style/EditTextNoPaddingStyle"
+					android:hint="@string/login_name_hint"
+					android:maxLength="11"
+					android:inputType="number"
+					android:paddingStart="@dimen/dp_60"
+					android:paddingTop="@dimen/dp_16"
+					android:paddingEnd="@dimen/dp_16"
+					android:paddingBottom="@dimen/dp_16"
+					tools:text="18612116814"/>
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:layout_margin="@dimen/dp_18"
+					android:text="+86"
+					android:textColor="@color/colorLabelText"
+					android:textSize="@dimen/sp_16"/>
+
+			<ImageView
+					android:id="@+id/iv_login_name_clear"
+					style="@style/EditTextCloseImageStyle"
+					android:layout_alignEnd="@+id/et_login_name"
+					tools:visibility="visible"/>
+
+		</RelativeLayout>
+
+		<TextView
+				android:id="@+id/tv_login_phone_number_warning"
+				style="@style/EditTextErrorWarningStyle"
+				android:layout_marginStart="@dimen/dp_40"
+				android:text="@string/warning_input_success_phone_number"
+				tools:visibility="visible"/>
+
+		<RelativeLayout
+				android:id="@+id/rl_password_layout"
+				style="@style/EditTextRLStyle">
+
+			<EditText
+					android:id="@+id/et_login_password"
+					style="@style/EditTextStyle"
+					android:hint="@string/login_password_hint"
+					android:inputType="textPassword"
+					android:maxLength="16"/>
+
+			<ImageView
+					android:id="@+id/iv_password_clear"
+					style="@style/EditTextCloseImageStyle"
+					android:layout_alignEnd="@+id/et_login_password"
+					tools:visibility="visible"/>
+
+		</RelativeLayout>
+
+		<RelativeLayout
+				android:id="@+id/rl_error"
+				style="@style/EditTextRLStyle"
+				android:layout_marginTop="@dimen/dp_0">
+
+			<TextView
+					android:id="@+id/tv_error_waning"
+					style="@style/EditTextErrorWarningStyle"
+					android:layout_centerVertical="true"
+					android:layout_marginStart="@dimen/dp_10"
+					android:layout_toStartOf="@+id/tv_forget_password"
+					android:text="@string/warning_input_success_pwd"
+					tools:visibility="visible"/>
+
+			<TextView
+					android:id="@+id/tv_forget_password"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentEnd="true"
+					android:layout_centerVertical="true"
+					android:padding="@dimen/dp_10"
+					android:text="@string/login_forget_password"
+					android:textColor="@color/color_666666"
+					android:textSize="@dimen/sp_14"/>
+
+		</RelativeLayout>
+
+		<Button
+				android:id="@+id/button_login"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				style="?android:attr/borderlessButtonStyle"
+				android:layout_gravity="center"
+				android:layout_marginLeft="@dimen/dp_30"
+				android:layout_marginRight="@dimen/dp_30"
+				android:background="@drawable/bg_btn_user_selector"
+				android:textSize="@dimen/sp_16"
+				android:text="@string/login_button"
+				android:textColor="@color/white"/>
+
+
+
+
+	</LinearLayout>
+
+</RelativeLayout>

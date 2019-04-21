@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LayoutMW">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="LayoutWW">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="QuestionDetailLL" parent="LayoutMW">
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">@dimen/dp_16</item>
+        <item name="android:paddingEnd">@dimen/dp_16</item>
+    </style>
+
+    <style name="EditTextNoPaddingStyle" parent="LayoutMW">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:lines">1</item>
+        <item name="android:textColor">@color/colorLabelText</item>
+        <item name="android:textColorHint">@color/color_999999</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:textCursorDrawable">@drawable/edit_text_cursor</item>
+    </style>
+
+
+    <style name="EditTextStyle" parent="EditTextNoPaddingStyle">
+        <item name="android:padding">@dimen/dp_16</item>
+    </style>
+
+    <style name="EditTextCloseImageStyle" parent="LayoutWW">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginRight">@dimen/dp_10</item>
+        <item name="android:src">@drawable/ic_login_password_clean</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="EditTextRLStyle" parent="LayoutMW">
+        <item name="android:paddingStart">@dimen/dp_10</item>
+        <item name="android:paddingEnd">@dimen/dp_10</item>
+        <item name="android:layout_marginLeft">@dimen/dp_20</item>
+        <item name="android:layout_marginRight">@dimen/dp_20</item>
+        <item name="android:layout_marginTop">@dimen/dp_12</item>
+    </style>
+
+    <style name="EditTextErrorWarningStyle" parent="LayoutMW">
+        <item name="android:gravity">left|center</item>
+        <item name="android:lines">1</item>
+        <item name="android:layout_marginStart">@dimen/dp_24</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:padding">@dimen/dp_5</item>
+        <item name="android:text">@string/login_forget_password</item>
+        <item name="android:textColor">@color/color_warning_login_text</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="BigButtonStyle" parent="LayoutMW">
+        <!--<item name="android:shadowColor">@color/colorAccent</item>-->
+        <!--<item name="android:shadowDx">0</item>-->
+        <!--<item name="android:shadowDy">10</item>-->
+        <!--<item name="android:shadowRadius">50</item>-->
+        <!--<item name="android:ambientShadowAlpha">center</item>-->
+        <!--<item name="android:spotShadowAlpha">center</item>-->
+        <!--<item name="android:outlineAmbientShadowColor">center</item>-->
+        <!--<item name="android:outlineSpotShadowColor">center</item>-->
+
+
+
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/dp_16</item>
+        <item name="android:layout_marginLeft">@dimen/dp_20</item>
+        <item name="android:layout_marginRight">@dimen/dp_20</item>
+    </style>
+
+
+    <style name="SettingRLStyle" parent="LayoutMW">
+        <item name="android:padding">@dimen/dp_20</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="SettingTVStyle" parent="LayoutWW">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/colorLabelText</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="SettingArrowStyle" parent="LayoutWW">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+
+</resources>
