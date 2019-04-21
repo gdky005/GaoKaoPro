@@ -2,8 +2,12 @@ package com.zk.gaokaopro.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.blankj.utilcode.util.ConvertUtils
 import com.zk.gaokaopro.R
+import com.zk.gaokaopro.adapter.CommendSpacesItemDecoration
+import com.zk.gaokaopro.adapter.HomeHListAdapter
 import com.zk.gaokaopro.adapter.HomeListAdapter
 import com.zk.gaokaopro.model.HomeListBean
 import com.zk.gaokaopro.model.RecommendBean
@@ -15,6 +19,13 @@ import team.zhuoke.sdk.base.BaseFragment
 
 
 class HomeFragment : BaseFragment() {
+
+   companion object {
+       // 图片的间距
+       const val picColumnSpace = 10F
+       // 推荐图片的列数
+       const val picColumn = 3
+   }
 
     val images = mutableListOf(
         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3351381896,4018125707&fm=26&gp=0.jpg",
@@ -71,12 +82,18 @@ class HomeFragment : BaseFragment() {
     private fun initRecyclerView() {
         //        https://www.jianshu.com/p/b343fcff51b0
         val list = ArrayList<HomeListBean>()
-        for (i in 0..59) {
+        for (i in 0..5) {
             list.add(HomeListBean("名字：$i", images[i % images.size]))
         }
 
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = HomeListAdapter(list)
+        val authorPicLLM = GridLayoutManager(activity, picColumn)
+        hRecyclerView.addItemDecoration(CommendSpacesItemDecoration(ConvertUtils.dp2px(picColumnSpace)))
+        hRecyclerView.layoutManager = authorPicLLM
+        hRecyclerView.adapter = HomeHListAdapter(list)
+
+
+        listRecyclerView.layoutManager = LinearLayoutManager(activity)
+        listRecyclerView.adapter = HomeListAdapter(list)
     }
 
 
