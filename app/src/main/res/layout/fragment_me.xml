@@ -5,12 +5,11 @@
 		android:layout_width="match_parent" android:layout_height="match_parent">
 
 
-	<TextView
+	<Button
+			android:id="@+id/btLogin"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:textSize="@dimen/sp_20"
-			android:textColor="@color/black"
-			android:text="我的账户相关数据"/>
+			android:text="登录"/>
 
 
 </LinearLayout>

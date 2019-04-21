@@ -25,11 +25,6 @@ import com.zk.gaokaopro.viewModel.home.RecommendViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import team.zhuoke.sdk.base.BaseFragment
 
-
-
-
-
-
 class HomeFragment : BaseFragment() {
 
    companion object {
