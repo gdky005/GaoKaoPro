@@ -8,6 +8,10 @@ object GKConstant{
     const val PIC_COLUMN = 4
 
 
+    // webview  调整参数
+    const val FLAG_WEBVIEW_URL = "flag_webview_url"
+
+
     val images = mutableListOf(
         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3351381896,4018125707&fm=26&gp=0.jpg",
         "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1218711089,2266838887&fm=26&gp=0.jpg",

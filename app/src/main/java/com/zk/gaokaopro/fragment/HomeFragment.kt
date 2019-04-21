@@ -1,15 +1,15 @@
 package com.zk.gaokaopro.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
-import com.blankj.utilcode.util.ToastUtils
-import com.youth.banner.listener.OnBannerListener
 import com.zk.gaokaopro.GKConstant
 import com.zk.gaokaopro.GKConstant.images
 import com.zk.gaokaopro.R
+import com.zk.gaokaopro.activity.WebViewActivity
 import com.zk.gaokaopro.adapter.CommendSpacesItemDecoration
 import com.zk.gaokaopro.adapter.HomeHListAdapter
 import com.zk.gaokaopro.adapter.HomeNewsListAdapter
@@ -69,12 +69,10 @@ class HomeFragment : BaseFragment() {
         val images = mutableListOf(R.drawable.default_pic)
         //设置图片加载器
         banner.setImageLoader(GlideImageLoader())
-        banner.setOnBannerListener(object : OnBannerListener {
-            override fun OnBannerClick(position: Int) {
-                ToastUtils.showShort(imageUrls[position].title)
-            }
-
-        })
+        banner.setOnBannerListener { position ->
+            if (imageUrls.size > 0)
+                startWebViewActivity(imageUrls[position].url)
+        }
 //        //设置图片集合
         banner.setImages(images)
 //        //banner设置方法全部调用完毕时最后调用
@@ -133,15 +131,22 @@ class HomeFragment : BaseFragment() {
         hRecyclerView.adapter = homHomeListAdapter
         homHomeListAdapter.setOnItemClickListener { adapter, view, position ->
             val categoryBean = adapter.data[position] as CategoryBean
-            ToastUtils.showShort(categoryBean.title)
+            startWebViewActivity(categoryBean.url)
         }
 
         listRecyclerView.layoutManager = LinearLayoutManager(activity)
         listRecyclerView.adapter = homeNewsListAdapter
         homeNewsListAdapter.setOnItemClickListener { adapter, view, position ->
             val newListBean = adapter.data[position] as NewsListBean
-            ToastUtils.showShort(newListBean.title)
+            startWebViewActivity(newListBean.url)
         }
+    }
+
+    /**
+     * 启动 WebView 页面
+     */
+    private fun startWebViewActivity(url : String) {
+        startActivity(Intent(activity, WebViewActivity::class.java).putExtra(GKConstant.FLAG_WEBVIEW_URL, url))
     }
 
 
