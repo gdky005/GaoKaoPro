@@ -30,6 +30,9 @@ interface GKApi {
     @GET(UrlConfig.URL_LOGIN)
     fun requestLogin(): Observable<GKBaseBean<LoginBean>>
 
+    @GET(UrlConfig.URL_REGISTER)
+    fun requestRegister(): Observable<GKBaseBean<LoginBean>>
+
     @POST(UrlConfig.URL_USER_LOGIN)
     fun login(@Body login: RequestLogin): Observable<GKBaseBean<ResponseLogin>>
 

@@ -22,6 +22,7 @@ object UrlConfig {
     const val URL_LIST = "list"
 
     const val URL_LOGIN = "login"
+    const val URL_REGISTER = "register"
 
     //测试页面接口
     const val URL_USER_LOGIN = "login/user_login"
