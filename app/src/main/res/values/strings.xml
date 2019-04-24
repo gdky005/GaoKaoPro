@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GaoKaoPro</string>
     <string name="title_home">主页</string>
-    <string name="title_list">列表</string>
+    <string name="title_list">消息</string>
     <string name="title_me">我的</string>
 
     <string name="login_name_hint">输入手机号</string>
