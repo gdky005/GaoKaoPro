@@ -1,23 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:id="@+id/meRootView"
-		android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/meRootView"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+
+	<LinearLayout
+		android:id="@+id/ll_login"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:paddingBottom="@dimen/dp_30"
+		android:layout_margin="@dimen/dp_20"
+		android:orientation="vertical">
+
+		<ImageView
+			android:id="@+id/userLogo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@mipmap/ic_launcher_round" />
+
+		<TextView
+			android:id="@+id/userName"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/dp_20"
+			android:gravity="center"
+			android:text="WangQing" />
+
+	</LinearLayout>
 
 
 	<Button
-			android:id="@+id/btLogin"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="登录"/>
+		android:id="@+id/btLogin"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/dp_10"
+		android:layout_marginLeft="@dimen/dp_20"
+		android:layout_marginRight="@dimen/dp_20"
+		android:text="登录" />
+
+
 
 
 	<Button
-			android:id="@+id/btAboutMe"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="关于我们"/>
+		android:id="@+id/btLogout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/dp_10"
+		android:layout_marginLeft="@dimen/dp_20"
+		android:layout_marginRight="@dimen/dp_20"
+		android:text="退出登录" />
+
+	<Button
+		android:id="@+id/btAboutMe"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/dp_10"
+		android:layout_marginLeft="@dimen/dp_20"
+		android:layout_marginRight="@dimen/dp_20"
+		android:text="关于我们" />
 
 </LinearLayout>
