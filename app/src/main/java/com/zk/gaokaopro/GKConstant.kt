@@ -2,8 +2,8 @@ package com.zk.gaokaopro
 
 object GKConstant{
     val BASE_URL_ITEMS = arrayOf(
-        "https://zkteam.cc/GaoKao/",
         "http://yapi.gdky005.com/mock/31/",
+        "https://zkteam.cc/GaoKao/",
         "http://rap2api.taobao.org/app/mock/165383/")
 
     val BASE_URL: String
