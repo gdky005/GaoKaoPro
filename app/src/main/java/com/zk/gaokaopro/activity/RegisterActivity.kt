@@ -184,6 +184,9 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
 
         showWarning(false, isShow = false)
 
+        registerViewModel.userName = account
+        registerViewModel.password = password
+        registerViewModel.passwordNew = passwordSure
         registerViewModel.requestData()
     }
 

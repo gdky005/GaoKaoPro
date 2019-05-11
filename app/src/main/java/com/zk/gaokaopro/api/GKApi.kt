@@ -4,10 +4,7 @@ import com.zk.gaokaopro.model.*
 import com.zk.gaokaopro.model.request.RequestLogin
 import com.zk.gaokaopro.model.response.ResponseLogin
 import io.reactivex.Observable
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface GKApi {
 
@@ -27,11 +24,16 @@ interface GKApi {
     @GET(UrlConfig.URL_LIST)
     fun requestList(): Observable<GKBaseBean<ArrayList<ListBean>>>
 
-    @GET(UrlConfig.URL_LOGIN)
+
+    @POST(UrlConfig.URL_LOGIN)
+    @FormUrlEncoded
     fun requestLogin(): Observable<GKBaseBean<LoginBean>>
 
-    @GET(UrlConfig.URL_REGISTER)
-    fun requestRegister(): Observable<GKBaseBean<LoginBean>>
+
+    @POST(UrlConfig.URL_REGISTER)
+    @FormUrlEncoded
+    fun requestRegister(@Field("account") userName: String, @Field("password")  password: String,
+                        @Field("password2")  passwordNew: String): Observable<GKBaseBean<LoginBean>>
 
     @POST(UrlConfig.URL_USER_LOGIN)
     fun login(@Body login: RequestLogin): Observable<GKBaseBean<ResponseLogin>>
