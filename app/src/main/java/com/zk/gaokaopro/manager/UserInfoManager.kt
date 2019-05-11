@@ -90,7 +90,7 @@ class UserInfoManager private constructor() {
         val phone = spUtils.getString(GKConstant.SP_KEY_USER_MOBILE, "")
         val uid = spUtils.getInt(GKConstant.SP_KEY_USER_UID, GKConstant.USER_DEFAULT_INVALID_UID)
 
-        return LoginBean(uid, name, phone)
+        return LoginBean(uid, name, "", phone)
     }
 
 

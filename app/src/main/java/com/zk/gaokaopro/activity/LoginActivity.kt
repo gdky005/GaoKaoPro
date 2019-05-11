@@ -152,6 +152,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
         showWarning(false, isShow = false)
 
+        loginViewModel.userName = account
+        loginViewModel.password = password
         loginViewModel.requestData()
     }
 

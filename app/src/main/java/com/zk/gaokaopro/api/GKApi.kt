@@ -27,7 +27,7 @@ interface GKApi {
 
     @POST(UrlConfig.URL_LOGIN)
     @FormUrlEncoded
-    fun requestLogin(): Observable<GKBaseBean<LoginBean>>
+    fun requestLogin(@Field("account") userName: String, @Field("password")  password: String): Observable<GKBaseBean<LoginBean>>
 
 
     @POST(UrlConfig.URL_REGISTER)
