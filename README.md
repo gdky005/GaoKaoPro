@@ -1,6 +1,8 @@
 # GaoKaoPro
 高考相关 app
 
+[![CircleCI](https://circleci.com/gh/gdky005/TestCircleCI2/tree/master.svg?style=svg)](https://circleci.com/gh/gdky005/TestCircleCI2/tree/master)
+
 
 ## 网络使用范例
 
