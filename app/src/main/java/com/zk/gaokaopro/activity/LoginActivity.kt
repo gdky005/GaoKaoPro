@@ -69,10 +69,12 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         loginViewModel = LoginViewModel()
         loginViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<LoginBean> {
             override fun success(result: LoginBean?) {
-                if (result != null) {
+                if (result != null && result.uid != 0) {
                     UserInfoManager.instance.saveUserInfo(result)
                     ToastUtils.showShort("登录成功：${result.name}")
                     finish()
+                } else {
+                    ToastUtils.showShort("登录失败，请检查用户名密码是否正确")
                 }
             }
         })

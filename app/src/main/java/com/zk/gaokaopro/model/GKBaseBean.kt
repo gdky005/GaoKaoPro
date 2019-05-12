@@ -6,7 +6,7 @@ import com.zk.gaokaopro.api.GKHttpStatusCode.Companion.REQUEST_NET_ERROR
 
 data class GKBaseBean<T>(
     @SerializedName("code") val code: Int,
-    @SerializedName("msg") val msg: String,
+    @SerializedName("message") val msg: String,
     @SerializedName("result") val result: T?
 ) {
 
@@ -17,7 +17,7 @@ data class GKBaseBean<T>(
 
         fun <T> otherError(data: T?) = GKBaseBean(
             REQUEST_NET_ERROR,
-            "网络出错",
+            "网络出错 或者 数据异常",
             data
         )
 
