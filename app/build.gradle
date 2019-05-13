@@ -21,24 +21,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        
-        debug{
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    flavorDimensions "default"
-    productFlavors {
-        ProductionEnv {
-            applicationId "com.zk.gaokaopro"
-            buildConfigField "boolean", "PRODUCTION_EVN", "true"
-        }
-
-        DebugEnv {
-            applicationId "com.debug.zk.gaokaopro"
-            buildConfigField "boolean", "PRODUCTION_EVN", "false"
-        }
     }
     compileOptions {
         sourceCompatibility '1.8'
