@@ -7,11 +7,6 @@ import com.zk.gaokaopro.R
 import com.zk.gaokaopro.fragment.HomeFragment
 import com.zk.gaokaopro.fragment.ListFragment
 import com.zk.gaokaopro.fragment.MeFragment
-import com.zk.gaokaopro.model.GKBaseBean
-import com.zk.gaokaopro.model.request.RequestLogin
-import com.zk.gaokaopro.model.response.ResponseLogin
-import com.zk.gaokaopro.net.BaseHttpObserver
-import com.zk.gaokaopro.net.requestmanager.LoginManager
 import kotlinx.android.synthetic.main.activity_main.*
 import team.zhuoke.sdk.base.BaseActivity
 import team.zhuoke.sdk.base.BaseFragment
@@ -51,22 +46,6 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
-
-        //TODO for test
-        LoginManager.login(RequestLogin("sunny","1132")).subscribe(object : BaseHttpObserver<GKBaseBean<ResponseLogin>>(){
-            override fun onError(e: Throwable) {
-                Log.d(TAG,"onError")
-            }
-
-            override fun onNext(t: GKBaseBean<ResponseLogin>) {
-                Log.d(TAG,"xxxxxonNext")
-            }
-
-            override fun onComplete() {
-                Log.d(TAG,"onComplete")
-            }
-        })
-
         FragmentUtils.add(supportFragmentManager, HomeFragment(), R.id.container)
     }
 
