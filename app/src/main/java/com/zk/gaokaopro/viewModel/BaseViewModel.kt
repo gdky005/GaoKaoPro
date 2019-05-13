@@ -9,12 +9,12 @@ import androidx.lifecycle.*
 import com.blankj.utilcode.util.ToastUtils
 import com.zk.gaokaopro.GKConstant
 import com.zk.gaokaopro.api.GKApi
+import com.zk.gaokaopro.manager.NetManager
 import com.zk.gaokaopro.model.GKBaseBean
 import com.zk.gaokaopro.subscriber.GKHttpSubscriber
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import team.zhuoke.sdk.manager.ZKConnectionManager
 
 abstract class BaseViewModel<T> : ViewModel() {
 
@@ -22,15 +22,9 @@ abstract class BaseViewModel<T> : ViewModel() {
         const val TAG = "BaseViewModel"
     }
 
-
-    var gkApi: GKApi
+    var gkApi: GKApi = NetManager.instance.getGKApi()
     val liveData = MutableLiveData<GKBaseBean<T>>()
     private var viewModel: BaseViewModel<T>? = null
-
-    init {
-        val connectionManager = ZKConnectionManager.getInstance()
-        gkApi = connectionManager.getApi(GKApi::class.java) as GKApi
-    }
 
     abstract fun getObservable(): Observable<GKBaseBean<T>>
 
