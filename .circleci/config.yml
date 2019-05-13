@@ -1,78 +1,15 @@
 # Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
 version: 2.1
 
-jobs:
-  build:
-#    working_directory: code
-    docker:
-      - image: circleci/android:api-28-alpha
-    environment:
-      JVM_OPTS: -Xmx3200m
-    steps:
-      - checkout
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-#      - run:
-#          name: Download Dependencies
-#          command: ./gradlew androidDependencies
-      - run:
-          name: Build Apk
-          command: |
-            ls
-            ./gradlew assembleDebug
-            pwd
-            nowTime=$(date +"%Y%m%d%H%M%S")
-            outName="${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BUILD_NUM}_${nowTime}.apk"
-            echo "文件的输出名字是：${outName}"
-            apkPath="app/build/outputs/apk/debug/app-debug.apk"
-            destPath="$outName"
-            echo "apk 的原始地址是：${apkPath}， apk 的目标地址是：${destPath}"
-            sudo mv ${apkPath} ${destPath}
-            APK_PATH="$destPath"
-            ls
-            echo $APK_PATH>APK_NAME.txt
-      - run:
-          name: 上传到蒲公英
-          command: |
-            apkName=`head -1 APK_NAME.txt`
-            echo "保存的路径是：$apkName"
-            pgyerReponse=`curl -F "file=@$apkName" \
-                                   -F "uKey=0d4628d290cecf6730f5df1949e1515c" \
-                                   -F "_api_key=808950acaea5f1c000852ad42e87fe0e" \
-                                   http://www.pgyer.com/apiv1/app/upload`
-            echo "蒲公英返回：$pgyerReponse"
-            echo $pgyerReponse>PGYER_REPONSE.txt
-            pgyerReponseJson=`cat PGYER_REPONSE.txt | jq .`
-            pgyerPath=`cat PGYER_REPONSE.txt | jq -r '.data.appShortcutUrl'`
-            echo "蒲公英短地址是：$pgyerPath"
+# Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
+orbs:
+  # Declare a dependency on the welcome-orb
+  welcome: circleci/welcome-orb@0.3.1
 
-            pgyerPath="https://www.pgyer.com/$pgyerPath"
-            echo "蒲公英的地址是：$pgyerPath"
-            echo $pgyerPath>PGYER_NAME.txt
-      - run:
-          name: 发送到钉钉中哦
-          command: |
-            pgyerPathNew=`head -1 PGYER_NAME.txt`
-            echo "读取蒲公英的地址是：$pgyerPathNew"
-            DingDing=$DingDingToken
-            DINGDINGURL="https://oapi.dingtalk.com/robot/send?access_token=$DingDing"
-            echo "钉钉地址是：$DINGDINGURL"
-            curl "${DINGDINGURL}" \
-            -H 'Content-Type: application/json' \
-            -X POST -d \
-                '{
-                    "msgtype": "markdown",
-                    "markdown": {
-                    "title":"Android 打包哦",
-                    "text":"### 项目名称: '"$CIRCLE_PROJECT_REPONAME AAA"'  \n > #### 操作人: '"$CIRCLE_PROJECT_USERNAME"' \n > #### 分支: '"$CIRCLE_BRANCH"' \n > [构建地址]('"$CIRCLE_BUILD_URL"') \n >  [下载地址]('"$pgyerPathNew"')"
-                }}'
-
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-#      - run:
-#          name: Run Tests
-#          command: ./gradlew lint test
-
-
+# Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
+workflows:
+  # Name the workflow "Welcome"
+  Welcome:
+    # Run the welcome/run job in its own container
+    jobs:
+      - welcome/run
