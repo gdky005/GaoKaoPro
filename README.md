@@ -1,7 +1,7 @@
 # GaoKaoPro
 高考相关 app
 
-[![CircleCI](https://circleci.com/gh/gdky005/TestCircleCI2/tree/master.svg?style=svg)](https://circleci.com/gh/gdky005/TestCircleCI2/tree/master)
+[![CircleCI](https://circleci.com/gh/gdky005/TestCircleCI2/tree/master.svg?style=svg)](https://circleci.com/gh/gdky005/TestCircleCI2/tree/master) [![Build Status](https://www.travis-ci.org/gdky005/GaoKaoPro.svg?branch=master)](https://www.travis-ci.org/gdky005/GaoKaoPro)
 
 
 ## 网络使用范例
