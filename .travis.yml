@@ -2,6 +2,12 @@ language: android
 #jdk: oraclejdk8
 #sudo: false
 
+cache:
+  bundler: true
+  directories:
+    - .gradle
+    - $HOME/.m2
+
 android:
   components:
     - tools
@@ -21,3 +27,5 @@ android:
 
 script:
   - ./gradlew assembleDebug
+#after_success:
+#  -
