@@ -4,6 +4,7 @@ import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.zk.gaokaopro.R
 import com.zk.gaokaopro.manager.UserInfoManager
+import com.zk.gaokaopro.model.GKBaseBean
 import com.zk.gaokaopro.model.ListBean
 import com.zk.gaokaopro.viewModel.BaseViewModel
 import com.zk.gaokaopro.viewModel.list.WriteMsgViewModel
@@ -26,7 +27,7 @@ class WriteMsgActivity : BaseActivity() {
 
     override fun initData() {
         writeMsgViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ListBean>{
-            override fun success(result: ListBean?) {
+            override fun success(gkBaseBean: GKBaseBean<ListBean>, result: ListBean?) {
                 ToastUtils.showShort("提交成功")
                 finish()
             }

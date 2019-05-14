@@ -19,7 +19,7 @@ interface GKApi {
     fun requestCategory(): Observable<GKBaseBean<ArrayList<CategoryBean>>>
 
     @GET(UrlConfig.URL_NEWS_LIST)
-    fun requestNewList(): Observable<GKBaseBean<ArrayList<NewsListBean>>>
+    fun requestNewList(@Query("page") page: Int, @Query("pageCount") pageCount: Int): Observable<GKBaseBean<ArrayList<NewsListBean>>>
 
     @GET(UrlConfig.URL_LIST)
     fun requestList(): Observable<GKBaseBean<ArrayList<ListBean>>>

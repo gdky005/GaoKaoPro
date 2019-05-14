@@ -37,7 +37,7 @@ abstract class BaseViewModel<T> : ViewModel() {
             .subscribe(object : GKHttpSubscriber<GKBaseBean<T>>() {
                 override fun onSuccess(t: GKBaseBean<T>) {
                     if (viewModel != null) {
-                        viewModel!!.liveData.value = GKBaseBean.success(t.result)
+                        viewModel!!.liveData.value = GKBaseBean.success(t.msg, t.result)
                     }
                 }
 
@@ -80,7 +80,7 @@ abstract class BaseViewModel<T> : ViewModel() {
             if (it != null) {
                 val errorCode = it.code
                 if (errorCode == GKConstant.CODE_SUCCESS) {
-                    callData(it.result)
+                    callData(it, it.result)
     //                            LiveDataBus.instance.getChannel(EventConstants.CONSULTATION_VIEW_COUNT_EVENT, RefreshData::class.java)
     //                                .postValue(refreshData)
                     return@Observer
@@ -93,9 +93,9 @@ abstract class BaseViewModel<T> : ViewModel() {
         })
     }
 
-    private fun callData(result: T?) {
+    private fun callData(gkBaseBean: GKBaseBean<T>, result: T?) {
         if (successCallBack != null) {
-            successCallBack!!.success(result)
+            successCallBack!!.success(gkBaseBean, result)
         }
     }
 
@@ -104,7 +104,7 @@ abstract class BaseViewModel<T> : ViewModel() {
     }
 
     interface SuccessCallBack<T> {
-        fun success(result: T?)
+        fun success(gkBaseBean: GKBaseBean<T>, result: T?)
     }
 
 }

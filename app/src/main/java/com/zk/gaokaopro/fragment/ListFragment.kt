@@ -11,6 +11,7 @@ import com.zk.gaokaopro.activity.MsgDetailActivity
 import com.zk.gaokaopro.activity.WriteMsgActivity
 import com.zk.gaokaopro.adapter.ListAdapter
 import com.zk.gaokaopro.manager.UserInfoManager
+import com.zk.gaokaopro.model.GKBaseBean
 import com.zk.gaokaopro.model.ListBean
 import com.zk.gaokaopro.viewModel.BaseViewModel
 import com.zk.gaokaopro.viewModel.list.ListViewModel
@@ -51,7 +52,7 @@ class ListFragment : BaseFragment() {
 
     override fun initData(savedInstanceState: Bundle?) {
         listViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<ListBean>>{
-            override fun success(result: ArrayList<ListBean>?) {
+            override fun success(gkBaseBean: GKBaseBean<ArrayList<ListBean>>, result: ArrayList<ListBean>?) {
                 homeNewsListAdapter.setNewData(result)
             }
         })

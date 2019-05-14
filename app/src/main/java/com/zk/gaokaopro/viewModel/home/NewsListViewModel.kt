@@ -6,7 +6,11 @@ import com.zk.gaokaopro.viewModel.BaseViewModel
 import io.reactivex.Observable
 
 class NewsListViewModel : BaseViewModel<ArrayList<NewsListBean>>() {
+
+    var pageCount = 5
+    var page = 1
+
     override fun getObservable(): Observable<GKBaseBean<ArrayList<NewsListBean>>> {
-        return gkApi.requestNewList()
+        return gkApi.requestNewList(page, pageCount)
     }
 }

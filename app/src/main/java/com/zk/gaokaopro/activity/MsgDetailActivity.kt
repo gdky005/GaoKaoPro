@@ -4,6 +4,7 @@ import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.TimeUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.zk.gaokaopro.R
+import com.zk.gaokaopro.model.GKBaseBean
 import com.zk.gaokaopro.model.ListBean
 import com.zk.gaokaopro.viewModel.BaseViewModel
 import com.zk.gaokaopro.viewModel.list.MsgDetailViewModel
@@ -40,7 +41,8 @@ class MsgDetailActivity : BaseActivity() {
         }
 
         msgDetailViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ListBean>{
-            override fun success(result: ListBean?) {
+
+            override fun success(gkBaseBean: GKBaseBean<ListBean>, result: ListBean?) {
                 updateUI(result)
             }
         })

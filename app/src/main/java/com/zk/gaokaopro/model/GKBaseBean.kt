@@ -11,7 +11,7 @@ data class GKBaseBean<T>(
 ) {
 
     companion object {
-        fun <T> success(data: T?) = GKBaseBean(0, "", data)
+        fun <T> success(msg: String, data: T?) = GKBaseBean(0, msg, data)
 
         fun <T> error(errorCode: Int, msg: String, data: T?) = GKBaseBean(errorCode, msg, data)
 

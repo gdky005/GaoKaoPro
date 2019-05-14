@@ -15,6 +15,8 @@ import com.blankj.utilcode.util.RegexUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.zk.gaokaopro.R
 import com.zk.gaokaopro.manager.UserInfoManager
+import com.zk.gaokaopro.model.GKBaseBean
+import com.zk.gaokaopro.model.ListBean
 import com.zk.gaokaopro.model.LoginBean
 import com.zk.gaokaopro.viewModel.BaseViewModel
 import com.zk.gaokaopro.viewModel.RegisterViewModel
@@ -73,7 +75,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
 
         registerViewModel = RegisterViewModel()
         registerViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<LoginBean> {
-            override fun success(result: LoginBean?) {
+            override fun success(gkBaseBean: GKBaseBean<LoginBean>, result: LoginBean?) {
                 if (result != null) {
                     UserInfoManager.instance.saveUserInfo(result)
                     ToastUtils.showShort("登录成功：${result.name}")
