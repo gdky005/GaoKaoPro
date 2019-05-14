@@ -12,7 +12,7 @@ class ListAdapter(data: MutableList<ListBean>?) :
     override fun convert(helper: ZKViewHolder?, item: ListBean?) {
         if (helper != null && item != null) {
             helper.setText(R.id.tvTitle, item.title)
-            helper.setText(R.id.tvTime, TimeUtils.millis2String(item.createTime))
+            helper.setText(R.id.tvTime, TimeUtils.millis2String(item.createTime * 1000))
             helper.setText(R.id.tvAuthor, item.author)
             helper.setText(R.id.tvSummery, item.summary)
         }
