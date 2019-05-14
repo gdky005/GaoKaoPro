@@ -28,6 +28,10 @@ class MsgDetailActivity : BaseActivity() {
     }
 
     override fun initViews() {
+        initToolbar()
+//        onLeftClick()
+        setTitle("消息详情")
+        mToolbar.setBackgroundColor(resources.getColor(R.color.transparent))
         setBarState(rlMsgDetail)
         BarUtils.addMarginTopEqualStatusBarHeight(rlMsgDetail)
     }

@@ -1,62 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:id="@+id/rlMsgDetail"
-		android:padding="@dimen/dp_20"
+		android:orientation="vertical"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-	<LinearLayout
+	<include layout="@layout/widget_toolbar"/>
+
+	<include layout="@layout/bg_line_1dp"/>
+
+	<RelativeLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical">
-		<TextView
-				android:id="@+id/tvDetailTitle"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:textColor="@color/black"
-				android:textSize="@dimen/sp_24"
-				tools:text="这是标题"/>
+			android:padding="@dimen/dp_20">
+
 
 		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:paddingTop="@dimen/dp_10"
-				android:paddingBottom="@dimen/dp_10"
-				android:orientation="horizontal">
+				android:orientation="vertical">
+
 			<TextView
-					android:id="@+id/tvDetailTime"
-					android:layout_width="wrap_content"
+					android:id="@+id/tvDetailTitle"
+					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					tools:text="时间"/>
+					android:textColor="@color/black"
+					android:textSize="@dimen/sp_24"
+					tools:text="这是标题"/>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingTop="@dimen/dp_10"
+					android:paddingBottom="@dimen/dp_10"
+					android:orientation="horizontal">
+
+				<TextView
+						android:id="@+id/tvDetailTime"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						tools:text="时间"/>
+
+				<TextView
+						android:id="@+id/tvDetailAuthor"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="@dimen/dp_10"
+						tools:text="作者"/>
+			</LinearLayout>
+
 			<TextView
-					android:id="@+id/tvDetailAuthor"
-					android:layout_width="wrap_content"
+					android:id="@+id/tvDetailSummary"
+					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginLeft="@dimen/dp_10"
-					tools:text="作者"/>
+					android:textColor="@color/gray_9"
+					android:textSize="@dimen/sp_18"
+					tools:text="这是简介"/>
+
+
+			<TextView
+					android:id="@+id/tvDetailContent"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/dp_30"
+					android:textColor="@color/gray_9"
+					android:textSize="@dimen/sp_18"
+					tools:text="这是详情内容哦"/>
+
 		</LinearLayout>
 
-		<TextView
-				android:id="@+id/tvDetailSummary"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:textColor="@color/gray_9"
-				android:textSize="@dimen/sp_18"
-				tools:text="这是简介"/>
-
-
-		<TextView
-				android:id="@+id/tvDetailContent"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="@dimen/dp_30"
-				android:textColor="@color/gray_9"
-				android:textSize="@dimen/sp_18"
-				tools:text="这是详情内容哦"/>
-
-	</LinearLayout>
-
-
-</RelativeLayout>
+	</RelativeLayout>
+</LinearLayout>
