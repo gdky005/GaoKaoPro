@@ -37,6 +37,10 @@ class ListFragment : BaseFragment() {
             val listBean = adapter.data[position] as ListBean
             startWebViewActivity(listBean.id)
         }
+        homeNewsListAdapter.setOnLoadMoreListener({
+            isFirstLoad = false
+            requestMsgData()
+        }, listZKRecyclerView)
     }
 
 
@@ -53,7 +57,18 @@ class ListFragment : BaseFragment() {
     override fun initData(savedInstanceState: Bundle?) {
         listViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<ListBean>>{
             override fun success(gkBaseBean: GKBaseBean<ArrayList<ListBean>>, result: ArrayList<ListBean>?) {
-                homeNewsListAdapter.setNewData(result)
+
+                if (isFirstLoad) {
+                    homeNewsListAdapter.setNewData(result)
+                } else {
+                    homeNewsListAdapter.addData(result!!)
+                    homeNewsListAdapter.loadMoreComplete()
+                }
+
+                if (homeNewsListAdapter.data.size >= gkBaseBean.msg.toInt()) {
+                    homeNewsListAdapter.loadMoreEnd()
+                }
+
             }
         })
 //        requestMsgData()
@@ -64,8 +79,12 @@ class ListFragment : BaseFragment() {
         requestMsgData()
     }
 
-
+    private var isFirstLoad = true
     private fun requestMsgData() {
+        if (!isFirstLoad) {
+            listViewModel.page = ++listViewModel.page
+        }
+
         listViewModel.requestData()
     }
 

@@ -22,6 +22,9 @@ abstract class BaseViewModel<T> : ViewModel() {
         const val TAG = "BaseViewModel"
     }
 
+    var page = 1
+    var pageCount = 5
+
     var gkApi: GKApi = NetManager.instance.getGKApi()
     val liveData = MutableLiveData<GKBaseBean<T>>()
     private var viewModel: BaseViewModel<T>? = null

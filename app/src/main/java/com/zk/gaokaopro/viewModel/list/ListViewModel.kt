@@ -6,7 +6,8 @@ import com.zk.gaokaopro.viewModel.BaseViewModel
 import io.reactivex.Observable
 
 class ListViewModel : BaseViewModel<ArrayList<ListBean>>() {
+
     override fun getObservable(): Observable<GKBaseBean<ArrayList<ListBean>>> {
-        return gkApi.requestList()
+        return gkApi.requestList(page, pageCount)
     }
 }

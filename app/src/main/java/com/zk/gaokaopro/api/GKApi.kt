@@ -22,7 +22,7 @@ interface GKApi {
     fun requestNewList(@Query("page") page: Int, @Query("pageCount") pageCount: Int): Observable<GKBaseBean<ArrayList<NewsListBean>>>
 
     @GET(UrlConfig.URL_LIST)
-    fun requestList(): Observable<GKBaseBean<ArrayList<ListBean>>>
+    fun requestList(@Query("page") page: Int, @Query("pageCount") pageCount: Int): Observable<GKBaseBean<ArrayList<ListBean>>>
 
 
     @POST(UrlConfig.URL_LOGIN)
