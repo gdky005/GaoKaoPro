@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.BarUtils
-import com.blankj.utilcode.util.ToastUtils
 import com.zk.gaokaopro.R
 import com.zk.gaokaopro.activity.MsgDetailActivity
+import com.zk.gaokaopro.activity.WriteMsgActivity
 import com.zk.gaokaopro.adapter.ListAdapter
 import com.zk.gaokaopro.model.ListBean
 import com.zk.gaokaopro.viewModel.BaseViewModel
@@ -40,7 +40,7 @@ class ListFragment : BaseFragment() {
     override fun initListener() {
 
         btWriteMsg.setOnClickListener {
-            ToastUtils.showShort("写消息")
+            startActivity(Intent(activity, WriteMsgActivity::class.java))
         }
     }
 
