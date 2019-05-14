@@ -6,9 +6,11 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.BarUtils
 import com.zk.gaokaopro.R
+import com.zk.gaokaopro.activity.LoginActivity
 import com.zk.gaokaopro.activity.MsgDetailActivity
 import com.zk.gaokaopro.activity.WriteMsgActivity
 import com.zk.gaokaopro.adapter.ListAdapter
+import com.zk.gaokaopro.manager.UserInfoManager
 import com.zk.gaokaopro.model.ListBean
 import com.zk.gaokaopro.viewModel.BaseViewModel
 import com.zk.gaokaopro.viewModel.list.ListViewModel
@@ -38,9 +40,12 @@ class ListFragment : BaseFragment() {
 
 
     override fun initListener() {
-
         btWriteMsg.setOnClickListener {
-            startActivity(Intent(activity, WriteMsgActivity::class.java))
+            if (UserInfoManager.instance.isLogin()) {
+                startActivity(Intent(activity, WriteMsgActivity::class.java))
+            } else {
+                startActivity(Intent(activity, LoginActivity::class.java))
+            }
         }
     }
 
@@ -50,6 +55,16 @@ class ListFragment : BaseFragment() {
                 homeNewsListAdapter.setNewData(result)
             }
         })
+//        requestMsgData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requestMsgData()
+    }
+
+
+    private fun requestMsgData() {
         listViewModel.requestData()
     }
 

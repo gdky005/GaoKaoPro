@@ -27,7 +27,7 @@ object UrlConfig {
     // 消息详情页面
     const val URL_MSG_DETAIL = "msgDetail"
     // 写消息
-    const val URL_WRITE_MSG = "writeMsg"
+    const val URL_WRITE_MSG = "saveMsg"
 
     //测试页面接口
     const val URL_USER_LOGIN = "login/user_login"

@@ -42,6 +42,12 @@ interface GKApi {
     @GET(UrlConfig.URL_MSG_DETAIL)
     fun requestMsgDetail(@Query("id") id: Int): Observable<GKBaseBean<ListBean>>
 
+    //写消息界面
+    @POST(UrlConfig.URL_WRITE_MSG)
+    @FormUrlEncoded
+    fun requestWriteMsg(@Field("uid") uid: Int, @Field("author") author: String, @Field("title")  title: String,
+                        @Field("summary")  summary: String, @Field("des")  des: String): Observable<GKBaseBean<ListBean>>
+
 
 
     /**
