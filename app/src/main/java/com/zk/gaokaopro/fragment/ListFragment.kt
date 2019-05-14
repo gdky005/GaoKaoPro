@@ -32,7 +32,8 @@ class ListFragment : BaseFragment() {
         listZKRecyclerView.adapter = homeNewsListAdapter
         homeNewsListAdapter.setOnItemClickListener { adapter, view, position ->
             val listBean = adapter.data[position] as ListBean
-            startWebViewActivity(listBean.url)
+//            startWebViewActivity(listBean.id)
+//            startWebViewActivity(listBean.url)
         }
     }
 

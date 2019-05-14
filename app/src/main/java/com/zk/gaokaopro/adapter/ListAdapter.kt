@@ -1,7 +1,6 @@
 package com.zk.gaokaopro.adapter
 
-import android.widget.ImageView
-import com.bumptech.glide.Glide
+import com.blankj.utilcode.util.TimeUtils
 import com.zk.gaokaopro.R
 import com.zk.gaokaopro.model.ListBean
 import team.zhuoke.sdk.component.ZKAdapter
@@ -12,9 +11,10 @@ class ListAdapter(data: MutableList<ListBean>?) :
 
     override fun convert(helper: ZKViewHolder?, item: ListBean?) {
         if (helper != null && item != null) {
-            val imageView = helper.getView<ImageView>(R.id.iv)
             helper.setText(R.id.tvTitle, item.title)
-            Glide.with(mContext).load(item.imgUrl).placeholder(R.drawable.default_pic).into(imageView)
+            helper.setText(R.id.tvTime, TimeUtils.millis2String(item.createTime))
+            helper.setText(R.id.tvAuthor, item.author)
+            helper.setText(R.id.tvSummery, item.summary)
         }
     }
 

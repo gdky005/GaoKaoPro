@@ -11,35 +11,49 @@
 	<RelativeLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:padding="@dimen/dp_10"
+			android:padding="@dimen/dp_20"
 			android:orientation="horizontal">
-
-		<ImageView
-				android:id="@+id/iv"
-				android:layout_width="@dimen/dp_100"
-				android:layout_centerVertical="true"
-				android:layout_height="@dimen/dp_100"/>
 
 		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_toRightOf="@+id/iv"
-				android:orientation="vertical"
-				android:layout_toEndOf="@+id/iv">
+				android:orientation="vertical">
 
 			<TextView
 					android:id="@+id/tvTitle"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_margin="@dimen/dp_10"
-					tools:text="Hello"/>
+					android:textSize="@dimen/sp_16"
+					android:textColor="@color/black"
+					tools:text="这是标题哦"/>
 
-			<TextView
-					android:id="@+id/tvDetail"
+			<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_margin="@dimen/dp_10"
-					tools:text="我是简介内容哦"/>
+					android:layout_marginTop="@dimen/dp_5"
+					android:orientation="horizontal">
+
+				<TextView
+						android:id="@+id/tvTime"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						tools:text="2019年05月14日"/>
+
+				<TextView
+						android:id="@+id/tvAuthor"
+						android:layout_width="wrap_content"
+						android:layout_marginLeft="@dimen/dp_20"
+						android:layout_height="wrap_content"
+						tools:text="作者"
+						android:layout_marginStart="@dimen/dp_20"/>
+			</LinearLayout>
+
+			<TextView
+					android:id="@+id/tvSummery"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/dp_10"
+					tools:text="简介"/>
 		</LinearLayout>
 
 	</RelativeLayout>
