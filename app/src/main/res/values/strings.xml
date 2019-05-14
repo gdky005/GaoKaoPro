@@ -16,4 +16,5 @@
 	<string name="login_text">登录</string>
 	<string name="go_back_text">返回</string>
     <string name="register_text">注册</string>
+	<string name="submit_text">提交</string>
 </resources>

@@ -19,10 +19,15 @@ object UrlConfig {
     const val URL_NEWS_LIST = "newList"
 
     //分类页面接口
-    const val URL_LIST = "list"
+    const val URL_LIST = "msgList"
 
     const val URL_LOGIN = "login"
     const val URL_REGISTER = "register"
+
+    // 消息详情页面
+    const val URL_MSG_DETAIL = "msgDetail"
+    // 写消息
+    const val URL_WRITE_MSG = "writeMsg"
 
     //测试页面接口
     const val URL_USER_LOGIN = "login/user_login"

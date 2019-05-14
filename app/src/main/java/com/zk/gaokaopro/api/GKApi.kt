@@ -38,6 +38,10 @@ interface GKApi {
     @POST(UrlConfig.URL_USER_LOGIN)
     fun login(@Body login: RequestLogin): Observable<GKBaseBean<ResponseLogin>>
 
+    //消息详情页面
+    @GET(UrlConfig.URL_MSG_DETAIL)
+    fun requestMsgDetail(@Query("id") id: Int): Observable<GKBaseBean<ListBean>>
+
 
 
     /**

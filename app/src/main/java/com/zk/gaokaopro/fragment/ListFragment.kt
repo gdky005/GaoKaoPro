@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.BarUtils
-import com.zk.gaokaopro.GKConstant
+import com.blankj.utilcode.util.ToastUtils
 import com.zk.gaokaopro.R
-import com.zk.gaokaopro.activity.WebViewActivity
+import com.zk.gaokaopro.activity.MsgDetailActivity
 import com.zk.gaokaopro.adapter.ListAdapter
 import com.zk.gaokaopro.model.ListBean
 import com.zk.gaokaopro.viewModel.BaseViewModel
@@ -32,14 +32,16 @@ class ListFragment : BaseFragment() {
         listZKRecyclerView.adapter = homeNewsListAdapter
         homeNewsListAdapter.setOnItemClickListener { adapter, view, position ->
             val listBean = adapter.data[position] as ListBean
-//            startWebViewActivity(listBean.id)
-//            startWebViewActivity(listBean.url)
+            startWebViewActivity(listBean.id)
         }
     }
 
 
     override fun initListener() {
 
+        btWriteMsg.setOnClickListener {
+            ToastUtils.showShort("写消息")
+        }
     }
 
     override fun initData(savedInstanceState: Bundle?) {
@@ -51,10 +53,7 @@ class ListFragment : BaseFragment() {
         listViewModel.requestData()
     }
 
-    /**
-     * 启动 WebView 页面
-     */
-    private fun startWebViewActivity(url : String) {
-        startActivity(Intent(activity, WebViewActivity::class.java).putExtra(GKConstant.FLAG_WEBVIEW_URL, url))
+    private fun startWebViewActivity(id : Int) {
+        startActivity(Intent(activity, MsgDetailActivity::class.java).putExtra(MsgDetailActivity.FLAG_MSG_DETAIL_ID, id))
     }
 }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:padding="@dimen/dp_20"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@color/black"
+				android:gravity="center"
+				android:textSize="@dimen/sp_30"
+				android:text="写消息"/>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:gravity="center_vertical">
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/sp_20"
+					android:textColor="@color/gray_9"
+					android:text="标题："/>
+
+			<EditText
+					android:id="@+id/etTitle"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="请输入标题"/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:gravity="center_vertical">
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/sp_20"
+					android:textColor="@color/gray_9"
+					android:text="简介："/>
+
+			<EditText
+					android:id="@+id/etSummary"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="这是简介"/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/sp_20"
+					android:textColor="@color/gray_9"
+					android:text="详情："/>
+
+			<EditText
+					android:id="@+id/etContent"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:lines="5"
+					android:gravity="left|top"
+					android:hint="这是详情内容哦"/>
+		</LinearLayout>
+
+		<Button
+				android:id="@+id/btSubmit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_marginTop="@dimen/dp_50"
+				android:text="@string/submit_text"/>
+
+	</LinearLayout>
+</RelativeLayout>
