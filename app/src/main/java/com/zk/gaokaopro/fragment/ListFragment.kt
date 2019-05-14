@@ -58,6 +58,10 @@ class ListFragment : BaseFragment() {
         listViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<ListBean>>{
             override fun success(gkBaseBean: GKBaseBean<ArrayList<ListBean>>, result: ArrayList<ListBean>?) {
 
+                if (homeNewsListAdapter.data.size >= gkBaseBean.msg.toInt()) {
+                    return
+                }
+
                 if (isFirstLoad) {
                     homeNewsListAdapter.setNewData(result)
                 } else {
