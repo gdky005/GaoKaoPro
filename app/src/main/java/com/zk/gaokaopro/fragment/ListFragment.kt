@@ -58,7 +58,8 @@ class ListFragment : BaseFragment() {
         listViewModel.setObserveListener(this, this, object : BaseViewModel.SuccessCallBack<ArrayList<ListBean>>{
             override fun success(gkBaseBean: GKBaseBean<ArrayList<ListBean>>, result: ArrayList<ListBean>?) {
 
-                if (homeNewsListAdapter.data.size >= gkBaseBean.msg.toInt()) {
+                val count = gkBaseBean.total
+                if (homeNewsListAdapter.data.size >= count) {
                     return
                 }
 
@@ -69,7 +70,7 @@ class ListFragment : BaseFragment() {
                     homeNewsListAdapter.loadMoreComplete()
                 }
 
-                if (homeNewsListAdapter.data.size >= gkBaseBean.msg.toInt()) {
+                if (homeNewsListAdapter.data.size >= count) {
                     homeNewsListAdapter.loadMoreEnd()
                 }
 

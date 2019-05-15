@@ -40,7 +40,7 @@ abstract class BaseViewModel<T> : ViewModel() {
             .subscribe(object : GKHttpSubscriber<GKBaseBean<T>>() {
                 override fun onSuccess(t: GKBaseBean<T>) {
                     if (viewModel != null) {
-                        viewModel!!.liveData.value = GKBaseBean.success(t.msg, t.result)
+                        viewModel!!.liveData.value = GKBaseBean.success(t.msg, t.total, t.result)
                     }
                 }
 

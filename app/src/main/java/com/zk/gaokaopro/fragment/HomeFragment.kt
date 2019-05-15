@@ -126,12 +126,7 @@ class HomeFragment : BaseFragment() {
                             homeNewsListAdapter.addData(result)
                         }
 
-                        var count = 0
-                        try {
-                            count = gkBaseBean.msg.toInt()
-                        } catch (e: Exception) {
-                        }
-
+                        val count = gkBaseBean.total
                         if (homeNewsListAdapter.data.size >= count) {
                             hideLoading()
                         }
